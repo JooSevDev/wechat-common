@@ -12,6 +12,8 @@ public class SysConfParam extends PagenationBean implements Serializable {
      */
     private String paramname;
 
+	private String paramvalue;
+    
     /**
      * sys_conf_param.paramdesc (数参描述)
      * @ibatorgenerated 2016-08-15 16:32:23
@@ -117,4 +119,13 @@ public class SysConfParam extends PagenationBean implements Serializable {
     public void setMemo(String memo) {
         this.memo = memo;
     }
+    
+    public String getParamvalue() {
+		return paramvalue;
+	}
+
+	public void setParamvalue(String paramvalue) {
+		this.paramvalue = paramvalue;
+	}
+
 }

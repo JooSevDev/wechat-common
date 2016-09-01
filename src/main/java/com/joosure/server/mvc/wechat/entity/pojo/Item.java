@@ -20,6 +20,10 @@ public class Item {
 	private String description;
 	private String wishItem;
 	private Integer itemType;
+	
+	//类型名称
+//	private String itemTypeName;
+	
 	private Integer ownerId;
 	private String ownerNickname;
 
@@ -36,6 +40,7 @@ public class Item {
 	private Date recommendedTime;
 
 	private String approvalStatus; // 审批情况
+	private String approvalMsg;//审批备注
 	private String lockStatus;// 锁定情况，有交换意向或已经交易就会锁定
 
 	private Integer status; // 0-正常 1-下线
@@ -251,5 +256,11 @@ public class Item {
 		}
 		return "";
 	}
+	public String getApprovalMsg() {
+		return approvalMsg;
+	}
 
+	public void setApprovalMsg(String approvalMsg) {
+		this.approvalMsg = approvalMsg;
+	}
 }

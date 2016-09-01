@@ -62,4 +62,8 @@ public interface SysConfParamDao {
 	List<SysConfParam> qryParamsInfo(Map<String, Object> cond);
 
 	int qryParamsCount(Map<String, Object> cond);
+
+	SysConfParam chkIfExist(SysConfParam record);
+
+	int changeSysConfParam(SysConfParam sysConfParam);
 }

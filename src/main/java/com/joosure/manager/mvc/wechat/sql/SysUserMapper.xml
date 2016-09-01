@@ -26,9 +26,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.joosure.manager.mvc.wechat.bean.SysUser" useGeneratedKeys="true" keyProperty="id" >
-    insert into sys_user (loginid, loginpass, salt, 
-      addtime, updatetime, `status`, 
-      loginname, extd)
+    insert into sys_user (loginid, loginpass, salt, addtime, updatetime, `status`, loginname, extd)
     values (#{loginid,jdbcType=VARCHAR}, #{loginpass,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
       #{addtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
       #{loginname,jdbcType=VARCHAR}, #{extd,jdbcType=VARCHAR})
@@ -49,13 +47,14 @@
       #{loginid,jdbcType=VARCHAR},
       #{loginpass,jdbcType=VARCHAR},
       #{salt,jdbcType=VARCHAR},
-      #{addtime,jdbcType=TIMESTAMP},
-      #{updatetime,jdbcType=TIMESTAMP},
-      #{status,jdbcType=INTEGER},
+      now(),
+      now(),
+      1,
       #{loginname,jdbcType=VARCHAR},
       #{extd,jdbcType=VARCHAR},
     </trim>
   </insert>
+  
   <update id="updateByPrimaryKeySelective" parameterType="com.joosure.manager.mvc.wechat.bean.SysUser" >
     update sys_user
     <set >
@@ -71,9 +70,7 @@
       <if test="addtime != null" >
         addtime = #{addtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null" >
-        updatetime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
+        updatetime = now(),
       <if test="status != null" >
         `status` = #{status,jdbcType=INTEGER},
       </if>
@@ -103,5 +100,32 @@
     <include refid="Base_Column_List" />
     from sys_user
     where loginId = #{loginId}
+  </select>
+  
+	<sql id="limitSql">
+		limit #{offset},#{limit}
+	</sql>
+	<sql id="qryCond">
+		<if test="loginid!=null and loginid!=''">
+  			and loginid = #{loginid}
+	  	</if>
+	  	<if test=" loginname !=null and loginname !=''">
+	  		and loginname = #{loginname}
+	  	</if>
+	</sql>
+  <select id="getUserList" parameterType="qryCondBean" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from sys_user
+  	where 1=1
+  	<include refid="qryCond" />
+  	order by id desc
+  	<include refid="limitSql" />
+  </select>
+  <select id="getUserListCount" parameterType="qryCondBean" resultType="java.lang.Integer">
+  	select count(1)
+  	from sys_user
+  	where 1=1
+  	<include refid="qryCond" />
   </select>
 </mapper>

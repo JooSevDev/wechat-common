@@ -2,6 +2,7 @@ package com.joosure.manager.mvc.wechat.dao;
 
 import java.util.List;
 
+import com.joosure.common.base.entity.QryCondBean;
 import com.joosure.manager.mvc.wechat.bean.SysUser;
 
 public interface SysUserDao {
@@ -54,4 +55,8 @@ public interface SysUserDao {
     int updateByPrimaryKey(SysUser record);
 
 	List<SysUser> getSysUserByLoginId(String loginId);
+
+	List<SysUser> getUserList(QryCondBean qryCond);
+
+	int getUserListCount(QryCondBean qryCond);
 }

@@ -27,4 +27,6 @@ public interface SysConfParamService {
 	 * @return
 	 */
 	int getParamsCount(Map<String, Object> cond);
+
+	int changeSysConfParam(SysConfParam sysConfParam);
 }

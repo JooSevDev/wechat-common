@@ -7,7 +7,7 @@ public interface SysUserOprDao {
      * 根据主键删除
      * 参数:主键
      * 返回:删除个数
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     int deleteByPrimaryKey(Long id);
 
@@ -15,7 +15,7 @@ public interface SysUserOprDao {
      * 插入，空属性也会插入
      * 参数:pojo对象
      * 返回:删除个数
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     int insert(SysUserOpr record);
 
@@ -23,7 +23,7 @@ public interface SysUserOprDao {
      * 插入，空属性不会插入
      * 参数:pojo对象
      * 返回:删除个数
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     int insertSelective(SysUserOpr record);
 
@@ -31,7 +31,7 @@ public interface SysUserOprDao {
      * 根据主键查询
      * 参数:查询条件,主键值
      * 返回:对象
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     SysUserOpr selectByPrimaryKey(Long id);
 
@@ -39,7 +39,7 @@ public interface SysUserOprDao {
      * 根据主键修改，空值条件不会修改成null
      * 参数:1.要修改成的值
      * 返回:成功修改个数
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     int updateByPrimaryKeySelective(SysUserOpr record);
 
@@ -47,7 +47,7 @@ public interface SysUserOprDao {
      * 根据主键修改，空值条件会修改成null
      * 参数:1.要修改成的值
      * 返回:成功修改个数
-     * @ibatorgenerated 2016-08-16 10:07:16
+     * @ibatorgenerated 2016-08-22 22:34:34
      */
     int updateByPrimaryKey(SysUserOpr record);
 }

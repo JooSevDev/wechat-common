@@ -3,16 +3,19 @@
 <mapper namespace="com.joosure.manager.mvc.wechat.dao.SysUserOprDao" >
   <resultMap id="BaseResultMap" type="com.joosure.manager.mvc.wechat.bean.SysUserOpr" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="oprurl" property="oprurl" jdbcType="VARCHAR" />
-    <result column="oprtime" property="oprtime" jdbcType="TIMESTAMP" />
-    <result column="oprparam" property="oprparam" jdbcType="VARCHAR" />
-    <result column="oprflag" property="oprflag" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="oprUrl" property="oprurl" jdbcType="VARCHAR" />
+    <result column="oprParam" property="oprparam" jdbcType="VARCHAR" />
+    <result column="oprStartTime" property="oprstarttime" jdbcType="TIMESTAMP" />
+    <result column="oprEndTime" property="oprendtime" jdbcType="TIMESTAMP" />
+    <result column="usingTime" property="usingtime" jdbcType="INTEGER" />
+    <result column="oprFlag" property="oprflag" jdbcType="INTEGER" />
     <result column="memo" property="memo" jdbcType="VARCHAR" />
-    <result column="retflag" property="retflag" jdbcType="INTEGER" />
+    <result column="retFlag" property="retflag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, userid, oprurl, oprtime, oprparam, oprflag, memo, retflag
+    id, userId, oprUrl, oprParam, oprStartTime, oprEndTime, usingTime, oprFlag, memo, 
+    retFlag
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
@@ -25,29 +28,35 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.joosure.manager.mvc.wechat.bean.SysUserOpr" useGeneratedKeys="true" keyProperty="id" >
-    insert into sys_user_opr (userid, oprurl, oprtime, 
-      oprparam, oprflag, memo, 
-      retflag)
-    values (#{userid,jdbcType=INTEGER}, #{oprurl,jdbcType=VARCHAR}, #{oprtime,jdbcType=TIMESTAMP}, 
-      #{oprparam,jdbcType=VARCHAR}, #{oprflag,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, 
-      #{retflag,jdbcType=INTEGER})
+    insert into sys_user_opr (userId, oprUrl, oprParam, 
+      oprStartTime, oprEndTime, usingTime, 
+      oprFlag, memo, retFlag
+      )
+    values (#{userid,jdbcType=INTEGER}, #{oprurl,jdbcType=VARCHAR}, #{oprparam,jdbcType=VARCHAR}, 
+      #{oprstarttime,jdbcType=TIMESTAMP}, #{oprendtime,jdbcType=TIMESTAMP}, #{usingtime,jdbcType=INTEGER}, 
+      #{oprflag,jdbcType=INTEGER}, #{memo,jdbcType=VARCHAR}, #{retflag,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.joosure.manager.mvc.wechat.bean.SysUserOpr" useGeneratedKeys="true" keyProperty="id" >
     insert into sys_user_opr
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      userid,
-      oprurl,
-      oprtime,
-      oprparam,
-      oprflag,
+      userId,
+      oprUrl,
+      oprParam,
+      oprStartTime,
+      oprEndTime,
+      usingTime,
+      oprFlag,
       memo,
-      retflag,
+      retFlag,
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{userid,jdbcType=INTEGER},
       #{oprurl,jdbcType=VARCHAR},
-      #{oprtime,jdbcType=TIMESTAMP},
       #{oprparam,jdbcType=VARCHAR},
+      now(),
+      #{oprendtime,jdbcType=TIMESTAMP},
+      #{usingtime,jdbcType=INTEGER},
       #{oprflag,jdbcType=INTEGER},
       #{memo,jdbcType=VARCHAR},
       #{retflag,jdbcType=INTEGER},
@@ -57,38 +66,46 @@
     update sys_user_opr
     <set >
       <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
+        userId = #{userid,jdbcType=INTEGER},
       </if>
       <if test="oprurl != null" >
-        oprurl = #{oprurl,jdbcType=VARCHAR},
-      </if>
-      <if test="oprtime != null" >
-        oprtime = #{oprtime,jdbcType=TIMESTAMP},
+        oprUrl = #{oprurl,jdbcType=VARCHAR},
       </if>
       <if test="oprparam != null" >
-        oprparam = #{oprparam,jdbcType=VARCHAR},
+        oprParam = #{oprparam,jdbcType=VARCHAR},
+      </if>
+      <if test="oprstarttime != null" >
+        oprStartTime = #{oprstarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="oprendtime != null" >
+        oprEndTime = #{oprendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="usingtime != null" >
+        usingTime = #{usingtime,jdbcType=INTEGER},
       </if>
       <if test="oprflag != null" >
-        oprflag = #{oprflag,jdbcType=INTEGER},
+        oprFlag = #{oprflag,jdbcType=INTEGER},
       </if>
       <if test="memo != null" >
         memo = #{memo,jdbcType=VARCHAR},
       </if>
       <if test="retflag != null" >
-        retflag = #{retflag,jdbcType=INTEGER},
+        retFlag = #{retflag,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.joosure.manager.mvc.wechat.bean.SysUserOpr" >
     update sys_user_opr
-    set userid = #{userid,jdbcType=INTEGER},
-      oprurl = #{oprurl,jdbcType=VARCHAR},
-      oprtime = #{oprtime,jdbcType=TIMESTAMP},
-      oprparam = #{oprparam,jdbcType=VARCHAR},
-      oprflag = #{oprflag,jdbcType=INTEGER},
+    set userId = #{userid,jdbcType=INTEGER},
+      oprUrl = #{oprurl,jdbcType=VARCHAR},
+      oprParam = #{oprparam,jdbcType=VARCHAR},
+      oprStartTime = #{oprstarttime,jdbcType=TIMESTAMP},
+      oprEndTime = #{oprendtime,jdbcType=TIMESTAMP},
+      usingTime = #{usingtime,jdbcType=INTEGER},
+      oprFlag = #{oprflag,jdbcType=INTEGER},
       memo = #{memo,jdbcType=VARCHAR},
-      retflag = #{retflag,jdbcType=INTEGER}
+      retFlag = #{retflag,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

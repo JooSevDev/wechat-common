@@ -3,7 +3,7 @@
 <mapper namespace="com.joosure.manager.mvc.wechat.dao.WxUserScoreDao" >
   <resultMap id="BaseResultMap" type="com.joosure.manager.mvc.wechat.bean.WxUserScore" >
     <id column="oId" property="oid" jdbcType="INTEGER" />
-    <result column="ruleId" property="ruleid" jdbcType="INTEGER" />
+    <result column="eventKey" property="eventKey" jdbcType="VARCHAR" />
     <result column="userId" property="userid" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
     <result column="addTime" property="addtime" jdbcType="TIMESTAMP" />
@@ -11,7 +11,7 @@
     <result column="memo" property="memo" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    oId, ruleId, userId, score, addTime, extdInfo, memo
+    oId, eventKey, userId, score, addTime, extdInfo, memo
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -24,10 +24,10 @@
     where oId = #{oid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.joosure.manager.mvc.wechat.bean.WxUserScore" >
-    insert into wx_user_score (oId, ruleId, userId, 
+    insert into wx_user_score (oId, eventKey, userId, 
       score, addTime, extdInfo, 
       memo)
-    values (#{oid,jdbcType=INTEGER}, #{ruleid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+    values (#{oid,jdbcType=INTEGER}, #{eventKey}, #{userid,jdbcType=INTEGER}, 
       #{score,jdbcType=INTEGER}, #{addtime,jdbcType=TIMESTAMP}, #{extdinfo,jdbcType=VARCHAR}, 
       #{memo,jdbcType=VARCHAR})
   </insert>
@@ -35,7 +35,7 @@
     insert into wx_user_score
     <trim prefix="(" suffix=")" suffixOverrides="," >
       oId,
-      ruleId,
+      eventKey,
       userId,
       score,
       addTime,
@@ -44,7 +44,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       #{oid,jdbcType=INTEGER},
-      #{ruleid,jdbcType=INTEGER},
+      #{eventKey},
       #{userid,jdbcType=INTEGER},
       #{score,jdbcType=INTEGER},
       #{addtime,jdbcType=TIMESTAMP},
@@ -55,8 +55,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.joosure.manager.mvc.wechat.bean.WxUserScore" >
     update wx_user_score
     <set >
-      <if test="ruleid != null" >
-        ruleId = #{ruleid,jdbcType=INTEGER},
+      <if test="eventKey != null" >
+        eventKey = #{eventKey},
       </if>
       <if test="userid != null" >
         userId = #{userid,jdbcType=INTEGER},
@@ -78,7 +78,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.joosure.manager.mvc.wechat.bean.WxUserScore" >
     update wx_user_score
-    set ruleId = #{ruleid,jdbcType=INTEGER},
+    set eventKey = #{eventKey},
       userId = #{userid,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},
       addTime = #{addtime,jdbcType=TIMESTAMP},

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.joosure.common.base.entity.QryCondBean;
 import com.joosure.server.mvc.wechat.entity.pojo.Exchange;
 import com.joosure.server.mvc.wechat.entity.pojo.Item;
 import com.joosure.server.mvc.wechat.entity.pojo.ItemComment;

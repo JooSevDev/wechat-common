@@ -1,5 +1,7 @@
 package com.joosure.manager.mvc.wechat.dao;
 
-public interface UserItemCmtDao {
+import java.util.Map;
 
+public interface UserItemCmtDao {
+	int clearAllCmt(Map<String,Object> params);
 }

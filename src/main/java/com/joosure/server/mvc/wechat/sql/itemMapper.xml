@@ -153,5 +153,5 @@
 		where itemId = #{itemId} and
 		userId = #{userId};
 	</select>
-
+	
 </mapper>

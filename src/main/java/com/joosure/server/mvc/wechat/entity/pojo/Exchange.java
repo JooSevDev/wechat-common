@@ -142,5 +142,12 @@ public class Exchange {
 		}
 		return "";
 	}
+	
+	public String getDisplayExchangeTime(){
+		if (exchangeTime != null) {
+			return DATE_FORMAT.format(exchangeTime);
+		}
+		return "";
+	}
 
 }

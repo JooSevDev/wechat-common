@@ -27,14 +27,14 @@ public interface WxUserService {
 	 * @param cond
 	 * @return
 	 */
-	boolean banUser(Map<String, Object> cond);
+	int banUser(Map<String, Object> cond);
 
 	/**
 	 * 对用户进行解除封号处理
 	 * @param cond
 	 * @return
 	 */
-	boolean cancelBanUser(Map<String, Object> cond);
+	int cancelBanUser(Map<String, Object> cond);
 
 	/**
 	 * 清除所有评论 ,同时清除评分按条件清除 
