@@ -12,7 +12,8 @@ public class Exchange {
 	public static final String EXCHANGE_STATE_ED = "exchanged";
 	public static final String EXCHANGE_STATE_CANCEL = "cancel";
 
-	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+//	public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+	public SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy.MM.dd HH:mm");
 
 	private Integer exchangeId;
 

@@ -1,6 +1,10 @@
 package com.joosure.common.base.entity;
 
-public class QryCondBean {
+import java.io.Serializable;
+
+public class QryCondBean implements Serializable{
+
+	private static final long serialVersionUID = -1143893959219871269L;
 
 	private static final int DEFAULT_SIZE = 10;
 
